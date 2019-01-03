@@ -2,19 +2,37 @@
 
 const knex = require('../knex');
 
-let searchTerm = 'gaga';
+let searchTerm = 's';
+// knex
+//   .select('notes.id', 'title', 'content')
+//   .from('notes')
+//   .modify(queryBuilder => {
+//     if (searchTerm) {
+//       queryBuilder.where('title', 'like', `%${searchTerm}%`);
+//     }
+//   })
+//   .orderBy('notes.id')
+//   .then(results => {
+//     console.log(JSON.stringify(results, null, 2));
+//   })
+//   .catch(err => {
+//     console.error(err);
+//   });
+
+// knex ('notes')
+//   .insert({
+//     title: 'More title', 
+//     content: 'More content'
+// })
+//   .then(console.log);
+
+
+const searchId = 12;
+
 knex
-  .select('notes.id', 'title', 'content')
+  .select()
   .from('notes')
-  .modify(queryBuilder => {
-    if (searchTerm) {
-      queryBuilder.where('title', 'like', `%${searchTerm}%`);
-    }
-  })
-  .orderBy('notes.id')
+  .where('id', `${searchId}`)
   .then(results => {
-    console.log(JSON.stringify(results, null, 2));
-  })
-  .catch(err => {
-    console.error(err);
+    console.log(results[0]);
   });
